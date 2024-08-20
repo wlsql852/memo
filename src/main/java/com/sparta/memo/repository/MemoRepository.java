@@ -12,4 +12,6 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
     //해당 username을 가진 데이터 조회
     List<Memo> findAllByUsername(String username);
 
+    List<Memo> findAllByContentsContainingOrderByModifiedAtDesc(String keyword);
+
 }

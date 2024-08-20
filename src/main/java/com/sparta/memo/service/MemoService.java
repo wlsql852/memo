@@ -58,4 +58,8 @@ public class MemoService {
     private Memo findMemo(Long id) {
         return memoRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("선택한 메모는 존재하지 않습니다"));
     }
+
+    public List<MemoResponseDto> getMemosByKeyword(String keyword) {
+        return memoRepository.findAllByContentsContainingOrderByModifiedAtDesc(keyword).stream().map(MemoResponseDto::new).toList();
+    }
 }
